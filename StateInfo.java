@@ -8,6 +8,16 @@ public class StateInfo {
         this.images = new DLList<String>();
     }
 
+
+    public void addImage(String url){
+        images.add(url);
+    }
+    public int getPopulation(){
+        return population;
+    }
+    public String getCapitalCity(){
+        return capitalCity;
+    }
     public String toString(){
         return "Capital City: " + capitalCity + " | Population: " + population + " million";
     }
