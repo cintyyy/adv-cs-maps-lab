@@ -60,78 +60,38 @@ public class Screen extends JPanel implements ActionListener {
 
 
     public void deleteState(/*idk what goes here */){
+
         //ask user for state abbreviation, then delete the state
         stateMap.remove();
     }
 
     public void actionPerformed(ActionEvent e) {
-        // Shuffle
-        if (e.getSource() == shuffle) {
-            playlist.get(0).shuffle(playlist);
-            displayPlaylist(playlist);
-        }
 
-        // Add song
-        else if (e.getSource() == addSong) {
-            String addition = addSongF.getText();
-
-            int comma1 = addition.indexOf(", ");
-            int comma2 = addition.indexOf(", ", comma1 + 1);
-            int comma3 = addition.indexOf(", ", comma2 + 1);
-
-            String songName = addition.substring(0, comma1);
-            String artist = addition.substring(comma1 + 2, comma2);
-            String album = addition.substring(comma2 + 2, comma3);
-            int location = Integer.parseInt(addition.substring(comma3 + 2));
-
-            playlist.add(location-1, new Song(songName, artist, album));
-            addSongF.setText("");
-
-            displayPlaylist(playlist);
-        }
-
-        // Sort by song
-        else if (e.getSource() == sortSong) {
+        if (e.getSource() == deleteState) {
             playlist.get(0).sortBySong(playlist);
             displayPlaylist(playlist);
         }
 
         // Sort by artist
-        else if (e.getSource() == sortArtist) {
+        else if (e.getSource() == viewStateInfo) {
             playlist.get(0).sortByArtist(playlist);
             displayPlaylist(playlist);
         }
 
         // Sort by album
-        else if (e.getSource() == sortAlbum) {
+        else if (e.getSource() == viewAllStates) {
             playlist.get(0).sortByAlbum(playlist);
             displayPlaylist(playlist);
         }
 
         // Delete by location
-        else if (e.getSource() == deleteSongLoc) {
+        else if (e.getSource() == addState) {
             int index = Integer.parseInt(deleteLocationF.getText());
             playlist.get(0).deleteSong(playlist, index);
             deleteLocationF.setText("");
             displayPlaylist(playlist);
         }
 
-        // Delete by song information
-        else if (e.getSource() == deleteSong) {
-            String info = deleteSongF.getText();
-            int comma1 = info.indexOf(", ");
-            int comma2 = info.indexOf(", ", comma1 + 1);
-
-            String songName = info.substring(0, comma1);
-            String artist = info.substring(comma1 + 2, comma2);
-            String album = info.substring(comma2 + 2);
-
-            playlist.get(0).deleteSong(playlist, songName, artist, album);
-
-            deleteSongF.setText("");
-
-            displayPlaylist(playlist);
-        }
     }
 
     @Override
