@@ -1,8 +1,10 @@
 public class State{
-    private String abbreviation;
-    public State(String abbreviation){
+    private String name, abbreviation;
+    public State(String name, String abbreviation){
+        this.name = name;
         this.abbreviation = abbreviation;
     }
+
     @Override
     public int hashCode(){
         String abb = abbreviation.toLowerCase();
@@ -10,6 +12,11 @@ public class State{
         int second = abb.charAt(1) - 'a';
         return first * 26 + second;
     }
+
+    public string getName() {
+        return name;
+    }
+
     public String getAbb(){
         return abbreviation;
     }
@@ -22,5 +29,10 @@ public class State{
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "State Name: " + name + " | Abbreviation: " + abbreviation;
     }
 }

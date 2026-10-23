@@ -14,79 +14,36 @@ import java.awt.event.ActionListener;
 
 public class Screen extends JPanel implements ActionListener {
     // Instance variables
-    private MyArrayList<Song> playlist;
-    private JTextArea textArea;
-    private JTextField addSongF, deleteLocationF, deleteSongF;
-    private JButton shuffle, addSong;
-    private JButton sortSong, sortArtist, sortAlbum, deleteSongLoc, deleteSong;
+    private MyHashMap<State,StateInfo> stateMap;
+    private JButton viewStateInfo, deleteState, viewAllStates, addState;
 
     // Constructor
     public Screen() {
         setFocusable(true);
         setLayout(null);
 
-        shuffle = new JButton("Shuffle playlist");
-        shuffle.setBounds(40, 40, 150, 30);
-        add(shuffle);
-        shuffle.addActionListener(this);
+        viewStateInfo = new JButton("View State Info");
+        viewStateInfo.setBounds(40, 40, 150, 30);
+        add(viewStateInfo);
+        viewStateInfo.addActionListener(this);
 
-        addSongF = new JTextField();
-        addSongF.setBounds(40, 140, 380, 30);
-        add(addSongF);
+        deleteState = new JButton("Delete State");
+        deleteState.setBounds(40, 40, 150, 30);
+        add(deleteState);
+        deleteState.addActionListener(this);
 
-        addSong = new JButton("Add Song");
-        addSong.setBounds(40, 180, 120, 30);
-        add(addSong);
-        addSong.addActionListener(this);
+        viewAllStates = new JButton("View All States");
+        viewAllStates.setBounds(40, 180, 120, 30);
+        add(viewAllStates);
+        viewAllStates.addActionListener(this);
 
-        sortSong = new JButton("Sort by Song");
-        sortSong.setBounds(40, 270, 120, 30);
-        add(sortSong);
-        sortSong.addActionListener(this);
+        addState = new JButton("Add State");
+        addState.setBounds(170, 270, 120, 30);
+        add(addState);
+        addState.addActionListener(this);
 
-        sortArtist = new JButton("Sort by Artist");
-        sortArtist.setBounds(170, 270, 120, 30);
-        add(sortArtist);
-        sortArtist.addActionListener(this);
-
-        sortAlbum = new JButton("Sort by Album");
-        sortAlbum.setBounds(300, 270, 120, 30);
-        add(sortAlbum);
-        sortAlbum.addActionListener(this);
-
-        deleteLocationF = new JTextField();
-        deleteLocationF.setBounds(40, 365, 80, 30);
-        add(deleteLocationF);
-
-        deleteSongLoc = new JButton("Delete by Location");
-        deleteSongLoc.setBounds(130, 365, 160, 30);
-        add(deleteSongLoc);
-        deleteSongLoc.addActionListener(this);
-
-        deleteSongF = new JTextField();
-        deleteSongF.setBounds(40, 490, 250, 30);
-        add(deleteSongF);
-
-        deleteSong = new JButton("Delete Song");
-        deleteSong.setBounds(300, 490, 130, 30);
-        add(deleteSong);
-        deleteSong.addActionListener(this);
-
-        textArea = new JTextArea();
-        textArea.setBounds(450, 80, 520, 500);
-        textArea.setEditable(false);
-        textArea.setFont(new Font("Arial", Font.PLAIN, 16));
-        add(textArea);
-
-        playlist = new MyArrayList<Song>();
-
-        playlist.add(new Song("Blinding Lights", "The Weeknd", "After Hours"));
-        playlist.add(new Song("Bad Guy", "Billie Eilish", "When We All Fall Asleep, Where Do We Go?"));
-        playlist.add(new Song("Shape of You", "Ed Sheeran", "Divide"));
-        playlist.add(new Song("Levitating", "Dua Lipa", "Future Nostalgia"));
-        playlist.add(new Song("As It Was", "Harry Styles", "Harry's House"));
-
-        displayPlaylist(playlist);
+        stateMap = new MyHashMap<State, StateInfo>();
+        stateMap.put(new State(), new StateInfo());
     }
 
     public void displayPlaylist(MyArrayList<Song> playlist) {
