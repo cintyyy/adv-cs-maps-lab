@@ -16,12 +16,14 @@ public class Screen extends JPanel implements ActionListener {
     // Instance variables
     private MyHashMap<State,StateInfo> stateMap;
     private JButton viewStateInfo, deleteState, viewAllStates, addState;
+    private JTextField viewStateInfoF, deleteStateF, addStateF; 
 
     // Constructor
     public Screen() {
         setFocusable(true);
         setLayout(null);
 
+        // Buttons
         viewStateInfo = new JButton("View State Info");
         viewStateInfo.setBounds(40, 40, 150, 30);
         add(viewStateInfo);
@@ -41,6 +43,19 @@ public class Screen extends JPanel implements ActionListener {
         addState.setBounds(170, 270, 120, 30);
         add(addState);
         addState.addActionListener(this);
+
+        // Text fields for user input
+        viewStateInfoF = new JTextField();
+        viewStateInfoF.setBounds(40, 140, 380, 30);
+        add(viewStateInfoF);
+
+        deleteStateF = new JTextField();
+        deleteStateF.setBounds(40, 140, 380, 30);
+        add(deleteStateF);
+
+        addStateF = new JTextField();
+        addStateF.setBounds(40, 140, 380, 30);
+        add(addStateF);
 
         stateMap = new MyHashMap<State, StateInfo>();
         stateMap.put(new State("California", "CA"), new StateInfo("Sacramento", 39));
