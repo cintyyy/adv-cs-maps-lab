@@ -56,6 +56,11 @@ public class Screen extends JPanel implements ActionListener {
         textArea.setText(songs);
     }
 
+
+    public void deleteState(/*idk what goes here */){
+        stateMap.remove()
+    }
+
     public void actionPerformed(ActionEvent e) {
         // Shuffle
         if (e.getSource() == shuffle) {
