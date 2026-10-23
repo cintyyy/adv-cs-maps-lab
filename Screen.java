@@ -43,7 +43,9 @@ public class Screen extends JPanel implements ActionListener {
         addState.addActionListener(this);
 
         stateMap = new MyHashMap<State, StateInfo>();
-        stateMap.put(new State(), new StateInfo());
+        stateMap.put(new State("California", "CA"), new StateInfo("Sacramento", 39));
+        stateMap.put(new State("Washington", "WA"), new StateInfo("Olympia", 8));
+        stateMap.put(new State("New York", "NY"), new StateInfo("Albany", 20));
     }
 
     public void displayPlaylist(MyArrayList<Song> playlist) {
