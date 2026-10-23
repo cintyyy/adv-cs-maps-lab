@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 public class Runner {
 	public static void main( String args[] ) {
         // Create the frame object. Give it a title appropriate to the application
-        JFrame frame = new JFrame("MyArrayList Lab");
+        JFrame frame = new JFrame("Maps Lab");
 
         //Create the JPanel object and add it to the frame
         Screen canvas = new Screen();
