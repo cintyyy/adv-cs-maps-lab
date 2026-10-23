@@ -13,7 +13,7 @@ public class State{
         return first * 26 + second;
     }
 
-    public string getName() {
+    public String getName() {
         return name;
     }
 

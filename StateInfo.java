@@ -8,7 +8,9 @@ public class StateInfo {
         this.images = new DLList<String>();
     }
 
-
+    public DLList<String> getImages(){
+        return images;
+    }
     public void addImage(String url){
         images.add(url);
     }

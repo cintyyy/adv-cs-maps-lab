@@ -1,9 +1,11 @@
 import javax.swing.JPanel;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Dimension;
 import java.awt.Font;
+
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -17,45 +19,71 @@ public class Screen extends JPanel implements ActionListener {
     private MyHashMap<State,StateInfo> stateMap;
     private JButton viewStateInfo, deleteState, viewAllStates, addState;
     private JTextField viewStateInfoF, deleteStateF, addStateF; 
+    private JTextArea infoArea;
+    private DLList<BufferedImage> pictures;
 
     // Constructor
     public Screen() {
         setFocusable(true);
         setLayout(null);
 
-        // Buttons
-        viewStateInfo = new JButton("View State Info");
-        viewStateInfo.setBounds(40, 40, 150, 30);
-        add(viewStateInfo);
-        viewStateInfo.addActionListener(this);
+        pictures = new DLList<BufferedImage>();
 
-        deleteState = new JButton("Delete State");
-        deleteState.setBounds(40, 40, 150, 30);
-        add(deleteState);
-        deleteState.addActionListener(this);
-
-        viewAllStates = new JButton("View All States");
-        viewAllStates.setBounds(40, 180, 120, 30);
-        add(viewAllStates);
-        viewAllStates.addActionListener(this);
-
-        addState = new JButton("Add State");
-        addState.setBounds(170, 270, 120, 30);
-        add(addState);
-        addState.addActionListener(this);
-
-        // Text fields for user input
+        // view state information
         viewStateInfoF = new JTextField();
-        viewStateInfoF.setBounds(40, 140, 380, 30);
+        viewStateInfoF.setBounds(40, 80, 150, 30);
         add(viewStateInfoF);
+        viewStateInfo = new JButton("View State Info");
+        viewStateInfo.setBounds(200, 80, 150, 30);
+        viewStateInfo.addActionListener(this);
+        add(viewStateInfo);
 
+        // delete state
         deleteStateF = new JTextField();
-        deleteStateF.setBounds(40, 140, 380, 30);
+        deleteStateF.setBounds(40, 150, 150, 30);
         add(deleteStateF);
+        deleteState = new JButton("Delete State");
+        deleteState.setBounds(200, 150, 150, 30);
+        deleteState.addActionListener(this);
+        add(deleteState);
+
+        // view all states
+        viewAllStates = new JButton("View All States");
+        viewAllStates.setBounds(40, 210, 150, 30);
+        viewAllStates.addActionListener(this);
+        add(viewAllStates);
 
         addStateF = new JTextField();
-        addStateF.setBounds(40, 140, 380, 30);
+        addStateF.setBounds(40, 260, 150, 30);
         add(addStateF);
+        addState = new JButton("Add State");
+        addState.setBounds(200, 260, 150, 30);
+        addState.addActionListener(this);
+        add(addState);
+
+        // output area for state information
+        infoArea = new JTextArea();
+        infoArea.setEditable(false);
+        infoArea.setLineWrap(true);
+        infoArea.setBounds(40, 320, 330, 240);
+        add(infoArea);
+
+        // 3 states with 2 pictures each
+        stateMap = new MyHashMap<State, StateInfo>();
+        StateInfo ca = new StateInfo("Sacramento", 39);
+        ca.addImage("url");
+        ca.addImage("url");
+        stateMap.put(new State("California", "CA"), ca);
+
+        StateInfo wa = new StateInfo("Olympia", 8);
+        wa.addImage("url");
+        wa.addImage("url");
+        stateMap.put(new State("Washington", "WA"), wa);
+
+        StateInfo ny = new StateInfo("Albany", 20);
+        ny.addImage("url");
+        ny.addImage("url");
+        stateMap.put(new State("New York", "NY"), ny);
 
         stateMap = new MyHashMap<State, StateInfo>();
         stateMap.put(new State("California", "CA"), new StateInfo("Sacramento", 39));

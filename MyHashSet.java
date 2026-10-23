@@ -18,7 +18,7 @@ public class MyHashSet<E>{
     public void clear() {
         for (int i = 0; i < hashArray.length; i++){
             hashArray[i] = null;
-            size--;
+            size = 0;
         }
     }
 
@@ -32,7 +32,7 @@ public class MyHashSet<E>{
 
     public boolean remove(Object obj) {
         int location = obj.hashCode();
-        if (hashArray[location].equals(obj)){
+        if (hashArray[location] != null && hashArray[location].equals(obj)){
             hashArray[location] = null;
             size--;
             return true;

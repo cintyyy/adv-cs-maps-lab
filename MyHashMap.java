@@ -30,11 +30,11 @@ public class MyHashMap<K,V>{
     public V remove(Object key){
         int index = key.hashCode();
         if (hashArray[index] != null) {
+            V old = (V) hashArray[index];
             keySet.remove(key);
             hashArray[index] = null;
             size--;
-
-            return (V) key;
+            return old;
         }
         return null;
     }
