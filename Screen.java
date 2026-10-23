@@ -68,6 +68,7 @@ public class Screen extends JPanel implements ActionListener {
         infoArea.setBounds(40, 320, 330, 240);
         add(infoArea);
 
+
         // 3 states with 2 pictures each
         stateMap = new MyHashMap<State, StateInfo>();
         StateInfo ca = new StateInfo("Sacramento", 39);
