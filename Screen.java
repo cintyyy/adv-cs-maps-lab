@@ -60,7 +60,8 @@ public class Screen extends JPanel implements ActionListener {
 
 
     public void deleteState(/*idk what goes here */){
-        stateMap.remove()
+        //ask user for state abbreviation, then delete the state
+        stateMap.remove();
     }
 
     public void actionPerformed(ActionEvent e) {
