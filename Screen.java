@@ -3,6 +3,8 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Dimension;
 import java.awt.Font;
+import javax.swing.BorderFactory;
+import java.awt.Color;
 
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
@@ -101,11 +103,6 @@ public class Screen extends JPanel implements ActionListener {
         ny.addImage("https://res.cloudinary.com/dtljonz0f/image/upload/c_auto,ar_4:3,w_3840,g_auto/f_auto/q_auto/v1/new-york-city-central-park?_a=BAVHyiGg0");
         stateMap.put(new State("New York", "NY"), ny);
 
-        textArea = new JTextArea();
-        textArea.setBounds(450, 80, 520, 500);
-        textArea.setEditable(false);
-        textArea.setFont(new Font("Arial", Font.PLAIN, 16));
-        add(textArea);
 
         stateMap = new MyHashMap<State, StateInfo>();
         stateMap.put(new State("California", "CA"), new StateInfo("Sacramento", 39));
@@ -135,7 +132,7 @@ public class Screen extends JPanel implements ActionListener {
             for (int i = 0; i < stateList.size(); i++){
                 states += stateList.get(i).getAbb() + "\n";
             }
-            textArea.setText(states);
+            infoArea.setText(states);
         }
 
         else if (e.getSource() == addPicture) {
@@ -156,36 +153,27 @@ public class Screen extends JPanel implements ActionListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // Title
-        g.setFont(new Font("Arial", Font.BOLD, 20));
-        g.drawString("PLAYLIST MANAGER", 40, 35);
+        g.setFont(new Font("Arial", Font.BOLD, 22));
+        g.drawString("STATES DATABASE", 40, 40);
 
-        // Add song
-        g.setFont(new Font("Arial", Font.BOLD, 18));
-        g.drawString("ADD A SONG", 40, 110);
+        g.setFont(new Font("Arial", Font.BOLD, 14));
+        g.drawString("VIEW STATE INFO", 40, 80);
+        g.drawString("DELETE STATE", 40, 150);
+        g.drawString("ADD PICTURE TO STATE", 40, 220);
+        g.drawString("ADD STATE", 40, 290);
+        g.drawString("INFORMATION", 40, 408);
+        g.drawString("PICTURES", 440, 40);
 
-        g.setFont(new Font("Arial", Font.PLAIN, 14));
-        g.drawString("Format: Song, Artist, Album, Location", 40, 130);
+        g.setFont(new Font("Arial", Font.PLAIN, 12));
+        g.drawString("Enter abbreviation (e.g. CA)", 160, 80);
+        g.drawString("Enter abbreviation (e.g. CA)", 160, 150);
+        g.drawString("Format: URL, abbreviation", 200, 220);
+        g.drawString("Format: Name, Abbreviation, Capital, Population", 110, 290);
 
-        // Sort playlist
-        g.setFont(new Font("Arial", Font.BOLD, 18));
-        g.drawString("SORT PLAYLIST", 40, 245);
-
-        // Delete by location
-        g.drawString("DELETE BY LOCATION", 40, 340);
-
-        g.setFont(new Font("Arial", Font.PLAIN, 14));
-        g.drawString("Enter 1 for the first song", 40, 355);
-
-        // Delete by song information
-        g.setFont(new Font("Arial", Font.BOLD, 18));
-        g.drawString("DELETE BY SONG INFORMATION", 40, 450);
-
-        g.setFont(new Font("Arial", Font.PLAIN, 14));
-        g.drawString("Format: Song, Artist, Album", 40, 465);
-
-        // Current playlist
-        g.setFont(new Font("Arial", Font.BOLD, 18));
-        g.drawString("CURRENT PLAYLIST", 450, 55);
+        for (int i = 0; i < pictures.size() && i < 4; i++) {
+            int x = 440 + (i % 2) * 280;
+            int y = 55 + (i / 2) * 210;
+            g.drawImage(pictures.get(i), x, y, 260, 195, null);
+        }
     }
 }
