@@ -135,7 +135,7 @@ public class Screen extends JPanel implements ActionListener {
             String states = "";
             DLList<State> stateList = stateMap.keySet().toDLList();
             for (int i = 0; i < stateList.size(); i++){
-                states += stateList.get(i).getAbb() + "\n";
+                states += stateList.get(i).toString() + "\n";
             }
             infoArea.setText(states);
         }
