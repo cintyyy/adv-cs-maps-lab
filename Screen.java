@@ -84,22 +84,21 @@ public class Screen extends JPanel implements ActionListener {
         infoArea.setBounds(40, 415, 370, 150);
         add(infoArea);
 
-
         // 3 states with 2 pictures each
         stateMap = new MyHashMap<State, StateInfo>();
         StateInfo ca = new StateInfo("Sacramento", 39);
-        ca.addImage("https://i.natgeofe.com/k/5af79b71-007d-46f8-8efe-bf37a504195b/california-golden-gate-bridge_4x3.jpg");
-        ca.addImage("https://m.media-amazon.com/images/I/71XxdIPdqaL._AC_UF894,1000_QL80_.jpg");
+        ca.addImage("url");
+        ca.addImage("url");
         stateMap.put(new State("California", "CA"), ca);
 
         StateInfo wa = new StateInfo("Olympia", 8);
-        wa.addImage("https://media.q4launch.website/uploads/sites/93/2020/05/Beautiful-Winter-Mountains-Snow-Forest-1024x683.jpg");
-        wa.addImage("https://www.visittheusa.com/wp-content/uploads/2025/09/WA_Washington_State-of-Washington-Tourism_0623_1-Seattle-Skyline_web72DPI_2000px.jpg");
+        wa.addImage("url");
+        wa.addImage("url");
         stateMap.put(new State("Washington", "WA"), wa);
 
         StateInfo ny = new StateInfo("Albany", 20);
-        ny.addImage("https://media.istockphoto.com/id/521714583/photo/new-york-city-midtown-with-empire-state-building-at-sunset.jpg?s=612x612&w=0&k=20&c=paLoZfZnaZSfaBK_DxLls_Ii0hD3r2PBKSlS6M1QxVU=");
-        ny.addImage("https://res.cloudinary.com/dtljonz0f/image/upload/c_auto,ar_4:3,w_3840,g_auto/f_auto/q_auto/v1/new-york-city-central-park?_a=BAVHyiGg0");
+        ny.addImage("url");
+        ny.addImage("url");
         stateMap.put(new State("New York", "NY"), ny);
 
         textArea = new JTextArea();
@@ -113,8 +112,6 @@ public class Screen extends JPanel implements ActionListener {
         stateMap.put(new State("Washington", "WA"), new StateInfo("Olympia", 8));
         stateMap.put(new State("New York", "NY"), new StateInfo("Albany", 20));
     }
-
-
 
     public void deleteState(/*idk what goes here */){
 
@@ -133,8 +130,16 @@ public class Screen extends JPanel implements ActionListener {
 
         // View all states (key values only)
         else if (e.getSource() == viewAllStates) {
-            playlist.get(0).sortByAlbum(playlist);
-            displayPlaylist(playlist);
+            String states = "";
+            DLList<State> stateList = stateMap.keySet().toDLList();
+            for (int i = 0; i < stateList.size(); i++){
+                states += stateList.get(i).getAbb() + "\n";
+            }
+            textArea.setText(states);
+        }
+
+        else if (e.getSource() == addPicture) {
+            addPictureF.getText();
         }
 
         // Add a new state
@@ -142,7 +147,7 @@ public class Screen extends JPanel implements ActionListener {
         }
     }
 
-    @Override 
+    @Override
     public Dimension getPreferredSize() {
         return new Dimension(1000, 600);
     }
