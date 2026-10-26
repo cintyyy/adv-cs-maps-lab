@@ -92,15 +92,6 @@ public class Screen extends JPanel implements ActionListener {
         stateMap.put(new State("New York", "NY"), new StateInfo("Albany", 20));
     }
 
-    public void displayPlaylist(MyArrayList<Song> playlist) {
-        String songs = "";
-
-        for (int i = 0; i < playlist.size(); i++) {
-            songs += (i + 1) + ". " + playlist.get(i).toString() + "\n";
-        }
-
-        textArea.setText(songs);
-    }
 
 
     public void deleteState(/*idk what goes here */){
@@ -112,28 +103,18 @@ public class Screen extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == deleteState) {
-            playlist.get(0).sortBySong(playlist);
-            displayPlaylist(playlist);
         }
 
         // Sort by artist
         else if (e.getSource() == viewStateInfo) {
-            playlist.get(0).sortByArtist(playlist);
-            displayPlaylist(playlist);
         }
 
         // Sort by album
         else if (e.getSource() == viewAllStates) {
-            playlist.get(0).sortByAlbum(playlist);
-            displayPlaylist(playlist);
         }
 
         // Delete by location
         else if (e.getSource() == addState) {
-            int index = Integer.parseInt(deleteLocationF.getText());
-            playlist.get(0).deleteSong(playlist, index);
-            deleteLocationF.setText("");
-            displayPlaylist(playlist);
         }
 
     }
