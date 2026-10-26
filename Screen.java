@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 public class Screen extends JPanel implements ActionListener {
     // Instance variables
     private MyHashMap<State,StateInfo> stateMap;
+    private JTextArea textArea;
     private JButton viewStateInfo, deleteState, viewAllStates, addState;
     private JTextField viewStateInfoF, deleteStateF, addStateF; 
     private JTextArea infoArea;
@@ -86,6 +87,12 @@ public class Screen extends JPanel implements ActionListener {
         ny.addImage("url");
         stateMap.put(new State("New York", "NY"), ny);
 
+        textArea = new JTextArea();
+        textArea.setBounds(450, 80, 520, 500);
+        textArea.setEditable(false);
+        textArea.setFont(new Font("Arial", Font.PLAIN, 16));
+        add(textArea);
+
         stateMap = new MyHashMap<State, StateInfo>();
         stateMap.put(new State("California", "CA"), new StateInfo("Sacramento", 39));
         stateMap.put(new State("Washington", "WA"), new StateInfo("Olympia", 8));
@@ -101,22 +108,23 @@ public class Screen extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-
+        // Delete a state
         if (e.getSource() == deleteState) {
         }
 
-        // Sort by artist
+        // View state information
         else if (e.getSource() == viewStateInfo) {
         }
 
-        // Sort by album
+        // View all states (key values only)
         else if (e.getSource() == viewAllStates) {
+            playlist.get(0).sortByAlbum(playlist);
+            displayPlaylist(playlist);
         }
 
-        // Delete by location
+        // Add a new state
         else if (e.getSource() == addState) {
         }
-
     }
 
     @Override
