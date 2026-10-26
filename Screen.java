@@ -127,7 +127,7 @@ public class Screen extends JPanel implements ActionListener {
         }
     }
 
-    @Override
+    @Override 
     public Dimension getPreferredSize() {
         return new Dimension(1000, 600);
     }
