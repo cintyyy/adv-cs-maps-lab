@@ -141,11 +141,33 @@ public class Screen extends JPanel implements ActionListener {
         }
 
         else if (e.getSource() == addPicture) {
-            addPictureF.getText();
+            String text = addPictureF.getText();
+
+            int comma = text.indexOf(", ");
+
+            String url = text.substring(0, comma);
+            String abbr = text.substring(comma + 2);
+
+            DLList<State> stateList = stateMap.keySet().toDLList();
+            for (int i = 0; i < stateList.size(); i++) {
+                if (stateList.get(i).getAbb().equals(abbr)) {
+                    stateMap.get(new State(stateList.get(i).getName(), abbr)).addImage(url);
+                }
+            }
+            
+            addPictureF.setText("");
         }
 
         // Add a new state
         else if (e.getSource() == addState) {
+            String text = addStateF.getText();
+
+            int comma = text.indexOf(", ");
+            int comma2 = text.indexOf(", ", comma + 1);
+            int comma3 = text.indexOf(", ", comma2 + 1);
+
+            String url = text.substring(0, comma);
+            String abbr = text.substring(comma + 2);
         }
     }
 
