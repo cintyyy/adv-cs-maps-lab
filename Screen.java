@@ -110,11 +110,6 @@ public class Screen extends JPanel implements ActionListener {
         stateMap.put(new State("New York", "NY"), new StateInfo("Albany", 20));
     }
 
-    public void deleteState(/*idk what goes here */){
-
-        //ask user for state abbreviation, then delete the state
-        stateMap.remove();
-    }
 
     public void actionPerformed(ActionEvent e) {
         // Delete a state
