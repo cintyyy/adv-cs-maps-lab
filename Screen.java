@@ -113,20 +113,28 @@ public class Screen extends JPanel implements ActionListener {
 
         // View state information
         else if (e.getSource() == viewStateInfo) {
-            String abb = viewStateInfoF.getText().toUpperCase();
-            State state = new State("", abb);
-            StateInfo info = stateMap.get(state);
-            if (info != null){
-                String stateInfo = "Capital: " + info.getCapitalCity() + "\nPopulation: " + info.getPopulation();
-                infoArea.setText(stateInfo);
-                pictures = info.getImages();
-                for (int i = 0; i < pictures.size(); i++){
-                    pictures.get(i);
+            String abb = viewStateInfoF.getText().trim().toUpperCase();
+            pictures.clear();
+            if (abb.length() != 2) {
+                infoArea.setText("Please enter a 2-letter abbreviation.");
+            } else {
+                StateInfo info = stateMap.get(new State("", abb));
+                if (info == null) {
+                    infoArea.setText("State not found.");
+                } else {
+                    infoArea.setText(info.toString());
+                    DLList<String> urls = info.getImages();
+                    for (int i = 0; i < urls.size(); i++) {
+                        try {
+                            BufferedImage img = ImageIO.read(new java.net.URL(urls.get(i)));
+                            if (img != null) {
+                                pictures.add(img);
+                            }
+                        } catch (Exception ex) {
+                            infoArea.append("\nCould not load picture " + (i + 1));
+                        }
+                    }
                 }
-                repaint();
-            }
-            else {
-                infoArea.setText("State not found.");
             }
         }
 
@@ -169,6 +177,7 @@ public class Screen extends JPanel implements ActionListener {
             String url = text.substring(0, comma);
             String abbr = text.substring(comma + 2);
         }
+        repaint(); 
     }
 
     @Override
