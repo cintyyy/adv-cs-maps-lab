@@ -103,11 +103,6 @@ public class Screen extends JPanel implements ActionListener {
         ny.addImage("https://res.cloudinary.com/dtljonz0f/image/upload/c_auto,ar_4:3,w_3840,g_auto/f_auto/q_auto/v1/new-york-city-central-park?_a=BAVHyiGg0");
         stateMap.put(new State("New York", "NY"), ny);
 
-
-        stateMap = new MyHashMap<State, StateInfo>();
-        stateMap.put(new State("California", "CA"), new StateInfo("Sacramento", 39));
-        stateMap.put(new State("Washington", "WA"), new StateInfo("Olympia", 8));
-        stateMap.put(new State("New York", "NY"), new StateInfo("Albany", 20));
     }
 
 
@@ -118,6 +113,21 @@ public class Screen extends JPanel implements ActionListener {
 
         // View state information
         else if (e.getSource() == viewStateInfo) {
+            String abb = viewStateInfoF.getText().toUpperCase();
+            State state = new State("", abb);
+            StateInfo info = stateMap.get(state);
+            if (info != null){
+                String stateInfo = "Capital: " + info.getCapitalCity() + "\nPopulation: " + info.getPopulation();
+                infoArea.setText(stateInfo);
+                pictures = info.getImages();
+                for (int i = 0; i < pictures.size(); i++){
+                    pictures.get(i);
+                }
+                repaint();
+            }
+            else {
+                infoArea.setText("State not found.");
+            }
         }
 
         // View all states (key values only)
