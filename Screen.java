@@ -18,8 +18,8 @@ public class Screen extends JPanel implements ActionListener {
     // Instance variables
     private MyHashMap<State,StateInfo> stateMap;
     private JTextArea textArea;
-    private JButton viewStateInfo, deleteState, viewAllStates, addState;
-    private JTextField viewStateInfoF, deleteStateF, addStateF; 
+    private JButton viewStateInfo, deleteState, viewAllStates, addState, addPicture;
+    private JTextField viewStateInfoF, deleteStateF, addStateF, addPictureF; 
     private JTextArea infoArea;
     private DLList<BufferedImage> pictures;
 
@@ -30,39 +30,43 @@ public class Screen extends JPanel implements ActionListener {
 
         pictures = new DLList<BufferedImage>();
 
-        // view state information
-        viewStateInfoF = new JTextField();
-        viewStateInfoF.setBounds(40, 80, 150, 30);
-        add(viewStateInfoF);
+        // View state information
         viewStateInfo = new JButton("View State Info");
         viewStateInfo.setBounds(200, 80, 150, 30);
         viewStateInfo.addActionListener(this);
         add(viewStateInfo);
+        viewStateInfoF = new JTextField(); // asks user for state abbreviation
+        viewStateInfoF.setBounds(40, 80, 150, 30);
+        add(viewStateInfoF);
 
-        // delete state
-        deleteStateF = new JTextField();
-        deleteStateF.setBounds(40, 150, 150, 30);
-        add(deleteStateF);
+        // Delete state
         deleteState = new JButton("Delete State");
         deleteState.setBounds(200, 150, 150, 30);
         deleteState.addActionListener(this);
         add(deleteState);
+        deleteStateF = new JTextField(); // asks user for state abbreviation
+        deleteStateF.setBounds(40, 150, 150, 30);
+        add(deleteStateF);
 
-        // view all states
+        // View all states
         viewAllStates = new JButton("View All States");
         viewAllStates.setBounds(40, 210, 150, 30);
         viewAllStates.addActionListener(this);
         add(viewAllStates);
 
-        addStateF = new JTextField();
-        addStateF.setBounds(40, 260, 150, 30);
-        add(addStateF);
+        // Add more pictures to the state
+        
+
+        // Add new state
         addState = new JButton("Add State");
         addState.setBounds(200, 260, 150, 30);
         addState.addActionListener(this);
         add(addState);
+        addStateF = new JTextField();
+        addStateF.setBounds(40, 260, 150, 30);
+        add(addStateF);
 
-        // output area for state information
+        // Output area for state information
         infoArea = new JTextArea();
         infoArea.setEditable(false);
         infoArea.setLineWrap(true);
