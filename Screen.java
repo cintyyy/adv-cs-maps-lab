@@ -55,7 +55,13 @@ public class Screen extends JPanel implements ActionListener {
         add(viewAllStates);
 
         // Add more pictures to the state
-        
+        addPicture = new JButton("Add Picture to State");
+        addPicture.setBounds(200, 150, 150, 30);
+        addPicture.addActionListener(this);
+        add(addPicture);
+        addPictureF = new JTextField(); // asks user for picture url + state abbreviation
+        addPictureF.setBounds(40, 150, 150, 30);
+        add(addPictureF);
 
         // Add new state
         addState = new JButton("Add State");
