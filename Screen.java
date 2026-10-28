@@ -180,7 +180,9 @@ public class Screen extends JPanel implements ActionListener {
             int population = Integer.parseInt(text.substring(comma3 + 2));
 
             if (validAbb(abbr)) {
+                stateMap.remove(new State("", abbr));
                 stateMap.put(new State(name, abbr), new StateInfo(capital, population));
+                infoArea.setText(name + " added.");
             }
             addStateF.setText("");
         } 
