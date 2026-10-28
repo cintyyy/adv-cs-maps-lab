@@ -110,7 +110,7 @@ public class Screen extends JPanel implements ActionListener {
         if (e.getSource() == viewStateInfo) {
             String abb = viewStateInfoF.getText().trim().toUpperCase();
             pictures.clear();
-            if (validAbb(abb)) {
+            if (!validAbb(abb)) {
                 infoArea.setText("Please enter a 2-letter abbreviation.");
             } else {
                 StateInfo info = stateMap.get(new State("", abb));
@@ -188,7 +188,7 @@ public class Screen extends JPanel implements ActionListener {
         else if (e.getSource() == deleteState) {
             String abb = deleteStateF.getText().trim().toUpperCase();
             pictures.clear();
-            if (validAbb(abb)) {
+            if (!validAbb(abb)) {
                 infoArea.setText("Please enter a 2-letter abbreviation");
             } else {
                 StateInfo removed = stateMap.remove(new State("", abb));
