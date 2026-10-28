@@ -182,6 +182,19 @@ public class Screen extends JPanel implements ActionListener {
             stateMap.put(new State(name, abbr), new StateInfo(capital, population));
 
             System.out.println(name + " " + abbr + " " + capital + " " + population);
+        } else if (e.getSource() == deleteState) {
+            String abb = deleteStateF.getText().trim().toUpperCase();
+            if (abb.length() != 2) {
+                infoArea.setText("Please enter a 2-letter abbreviation.");
+            } else {
+                State removed = stateMap.remove(new State("", abb));
+                if (removed == null) {
+                    infoArea.setText("State not found.");
+                } else {
+                    infoArea.setText("State " + removed.getName() + " (" + removed.getAbb() + ") has been deleted.");
+                }
+            }
+
         }
         repaint(); 
     }
