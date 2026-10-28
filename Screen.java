@@ -225,7 +225,7 @@ public class Screen extends JPanel implements ActionListener {
         g.drawString("Enter abbreviation (e.g. CA)", 40, 83);
         g.drawString("Enter abbreviation (e.g. CA)", 40, 153);
         g.drawString("Format: URL, abbreviation", 40, 223);
-        g.drawString("Format: Name, Abbreviation, Capital, Population", 40, 293);
+        g.drawString("Format: Name, Abbreviation, Capital, Population (In Millions!)", 40, 293);
 
         for (int i = 0; i < pictures.size() && i < 4; i++) {
             int x = 440 + (i % 2) * 280;
