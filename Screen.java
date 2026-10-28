@@ -182,6 +182,7 @@ public class Screen extends JPanel implements ActionListener {
             if (validAbb(abbr)) {
                 stateMap.put(new State(name, abbr), new StateInfo(capital, population));
             }
+            addStateF.setText("");
         } 
         
         // Delete a state
@@ -198,6 +199,7 @@ public class Screen extends JPanel implements ActionListener {
                     infoArea.setText(abb + " has been deleted!");
                 }
             }
+            deleteStateF.setText("");
         }
         repaint(); 
     }
