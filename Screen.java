@@ -198,6 +198,10 @@ public class Screen extends JPanel implements ActionListener {
         repaint(); 
     }
 
+    private boolean validAbb(String abb) {
+        return abb.length() == 2 && Character.isLetter(abb.charAt(0)) && Character.isLetter(abb.charAt(1));
+    }
+
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(1000, 600);
