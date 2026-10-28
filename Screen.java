@@ -19,7 +19,6 @@ import java.awt.event.ActionListener;
 public class Screen extends JPanel implements ActionListener {
     // Instance variables
     private MyHashMap<State,StateInfo> stateMap;
-    private JTextArea textArea;
     private JButton viewStateInfo, deleteState, viewAllStates, addState, addPicture;
     private JTextField viewStateInfoF, deleteStateF, addStateF, addPictureF; 
     private JTextArea infoArea;
@@ -136,6 +135,7 @@ public class Screen extends JPanel implements ActionListener {
 
         // View all states (key values only)
         else if (e.getSource() == viewAllStates) {
+            pictures.clear();
             String states = "";
             DLList<State> stateList = stateMap.keySet().toDLList();
             for (int i = 0; i < stateList.size(); i++){
