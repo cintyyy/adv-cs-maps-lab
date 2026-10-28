@@ -110,7 +110,7 @@ public class Screen extends JPanel implements ActionListener {
         if (e.getSource() == viewStateInfo) {
             String abb = viewStateInfoF.getText().trim().toUpperCase();
             pictures.clear();
-            if (abb.length() != 2) {
+            if (validAbb(abb)) {
                 infoArea.setText("Please enter a 2-letter abbreviation.");
             } else {
                 StateInfo info = stateMap.get(new State("", abb));
@@ -151,17 +151,19 @@ public class Screen extends JPanel implements ActionListener {
             int comma = text.indexOf(", ");
 
             String url = text.substring(0, comma);
-            String abbr = text.substring(comma + 2);
+            String abbr = text.substring(comma + 2).toUpperCase();
 
-            DLList<State> stateList = stateMap.keySet().toDLList();
-            for (int i = 0; i < stateList.size(); i++) {
-                if (stateList.get(i).getAbb().equals(abbr)) {
-                    stateMap.get(new State(stateList.get(i).getName(), abbr)).addImage(url);
+            if (validAbb(abbr)) {
+                DLList<State> stateList = stateMap.keySet().toDLList();
+                for (int i = 0; i < stateList.size(); i++) {
+                    if (stateList.get(i).getAbb().equals(abbr)) {
+                        stateMap.get(new State(stateList.get(i).getName(), abbr)).addImage(url);
+                    }
                 }
+                infoArea.setText("Picture added to " + abbr);
+                
+                addPictureF.setText("");
             }
-            infoArea.setText("Picture added to " + abbr);
-            
-            addPictureF.setText("");
         }
 
         // Add a new state
@@ -177,14 +179,16 @@ public class Screen extends JPanel implements ActionListener {
             String capital = text.substring(comma2 + 2, comma3);
             int population = Integer.parseInt(text.substring(comma3 + 2));
 
-            stateMap.put(new State(name, abbr), new StateInfo(capital, population));
+            if (validAbb(abbr)) {
+                stateMap.put(new State(name, abbr), new StateInfo(capital, population));
+            }
         } 
         
         // Delete a state
         else if (e.getSource() == deleteState) {
             String abb = deleteStateF.getText().trim().toUpperCase();
             pictures.clear();
-            if (abb.length() != 2) {
+            if (validAbb(abb)) {
                 infoArea.setText("Please enter a 2-letter abbreviation");
             } else {
                 StateInfo removed = stateMap.remove(new State("", abb));
