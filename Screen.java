@@ -95,7 +95,7 @@ public class Screen extends JPanel implements ActionListener {
 
         StateInfo wa = new StateInfo("Olympia", 8);
         wa.addImage("https://media.q4launch.website/uploads/sites/93/2020/05/Beautiful-Winter-Mountains-Snow-Forest-1024x683.jpg");
-        wa.addImage("https://www.visittheusa.com/wp-content/uploads/2025/09/WA_Washington_State-of-Washington-Tourism_0623_1-Seattle-Skyline_web72DPI_2000px.jpg");
+        wa.addImage("https://i.natgeofe.com/k/0b465203-f1ca-4c19-b69f-bd2461f072a1/washington-mount-rainier_2x1.jpg");
         stateMap.put(new State("Washington", "WA"), wa);
 
         StateInfo ny = new StateInfo("Albany", 20);
