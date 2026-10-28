@@ -102,9 +102,7 @@ public class Screen extends JPanel implements ActionListener {
         ny.addImage("https://media.istockphoto.com/id/521714583/photo/new-york-city-midtown-with-empire-state-building-at-sunset.jpg?s=612x612&w=0&k=20&c=paLoZfZnaZSfaBK_DxLls_Ii0hD3r2PBKSlS6M1QxVU=");
         ny.addImage("https://res.cloudinary.com/dtljonz0f/image/upload/c_auto,ar_4:3,w_3840,g_auto/f_auto/q_auto/v1/new-york-city-central-park?_a=BAVHyiGg0");
         stateMap.put(new State("New York", "NY"), ny);
-
     }
-
 
     public void actionPerformed(ActionEvent e) {
         // Delete a state
@@ -136,6 +134,7 @@ public class Screen extends JPanel implements ActionListener {
                     }
                 }
             }
+            viewStateInfoF.setText("");
         }
 
         // View all states (key values only)
@@ -148,6 +147,7 @@ public class Screen extends JPanel implements ActionListener {
             infoArea.setText(states);
         }
 
+        // Add a new picture to a state
         else if (e.getSource() == addPicture) {
             String text = addPictureF.getText();
 
