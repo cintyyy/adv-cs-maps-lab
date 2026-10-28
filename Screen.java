@@ -105,12 +105,9 @@ public class Screen extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        // Delete a state
-        if (e.getSource() == deleteState) {
-        }
 
         // View state information
-        else if (e.getSource() == viewStateInfo) {
+        if (e.getSource() == viewStateInfo) {
             String abb = viewStateInfoF.getText().trim().toUpperCase();
             pictures.clear();
             if (abb.length() != 2) {
@@ -184,14 +181,15 @@ public class Screen extends JPanel implements ActionListener {
             System.out.println(name + " " + abbr + " " + capital + " " + population);
         } else if (e.getSource() == deleteState) {
             String abb = deleteStateF.getText().trim().toUpperCase();
+            pictures.clear();
             if (abb.length() != 2) {
-                infoArea.setText("Please enter a 2-letter abbreviation.");
+                infoArea.setText("Please enter a 2-letter abbreviation");
             } else {
-                State removed = stateMap.remove(new State("", abb));
+                StateInfo removed = stateMap.remove(new State("", abb));
                 if (removed == null) {
-                    infoArea.setText("State not found.");
+                    infoArea.setText("State not found");
                 } else {
-                    infoArea.setText("State " + removed.getName() + " (" + removed.getAbb() + ") has been deleted.");
+                    infoArea.setText(abb + " has been deleted!");
                 }
             }
 
