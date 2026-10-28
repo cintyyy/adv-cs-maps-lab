@@ -207,22 +207,21 @@ public class Screen extends JPanel implements ActionListener {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        g.setFont(new Font("Arial", Font.BOLD, 22));
-        g.drawString("STATES DATABASE", 40, 40);
-
+        // Section labels (bold)
         g.setFont(new Font("Arial", Font.BOLD, 14));
-        g.drawString("VIEW STATE INFO", 40, 80);
-        g.drawString("DELETE STATE", 40, 150);
-        g.drawString("ADD PICTURE TO STATE", 40, 220);
-        g.drawString("ADD STATE", 40, 290);
+        g.drawString("VIEW STATE INFO", 40, 68);
+        g.drawString("DELETE STATE", 40, 138);
+        g.drawString("ADD PICTURE TO STATE", 40, 208);
+        g.drawString("ADD STATE", 40, 278);
         g.drawString("INFORMATION", 40, 408);
         g.drawString("PICTURES", 440, 40);
 
+        // Instructions (small, directly above each text field)
         g.setFont(new Font("Arial", Font.PLAIN, 12));
-        g.drawString("Enter abbreviation (e.g. CA)", 160, 80);
-        g.drawString("Enter abbreviation (e.g. CA)", 160, 150);
-        g.drawString("Format: URL, abbreviation", 200, 220);
-        g.drawString("Format: Name, Abbreviation, Capital, Population", 110, 290);
+        g.drawString("Enter abbreviation (e.g. CA)", 40, 83);
+        g.drawString("Enter abbreviation (e.g. CA)", 40, 153);
+        g.drawString("Format: URL, abbreviation", 40, 223);
+        g.drawString("Format: Name, Abbreviation, Capital, Population", 40, 293);
 
         for (int i = 0; i < pictures.size() && i < 4; i++) {
             int x = 440 + (i % 2) * 280;
