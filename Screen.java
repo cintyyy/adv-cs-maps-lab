@@ -105,7 +105,10 @@ public class Screen extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
         // View state information
         if (e.getSource() == viewStateInfo) {
             String abb = viewStateInfoF.getText().trim().toUpperCase();
@@ -159,6 +162,7 @@ public class Screen extends JPanel implements ActionListener {
                     stateMap.get(new State(stateList.get(i).getName(), abbr)).addImage(url);
                 }
             }
+            infoArea.setText("Picture added to " + abbr);
             
             addPictureF.setText("");
         }
@@ -172,14 +176,15 @@ public class Screen extends JPanel implements ActionListener {
             int comma3 = text.indexOf(", ", comma2 + 1);
 
             String name = text.substring(0, comma);
-            String abbr = text.substring(comma + 2, comma2);
+            String abbr = text.substring(comma + 2, comma2).toUpperCase();
             String capital = text.substring(comma2 + 2, comma3);
             int population = Integer.parseInt(text.substring(comma3 + 2));
 
             stateMap.put(new State(name, abbr), new StateInfo(capital, population));
-
-            System.out.println(name + " " + abbr + " " + capital + " " + population);
-        } else if (e.getSource() == deleteState) {
+        } 
+        
+        // Delete a state
+        else if (e.getSource() == deleteState) {
             String abb = deleteStateF.getText().trim().toUpperCase();
             pictures.clear();
             if (abb.length() != 2) {
@@ -192,7 +197,6 @@ public class Screen extends JPanel implements ActionListener {
                     infoArea.setText(abb + " has been deleted!");
                 }
             }
-
         }
         repaint(); 
     }
