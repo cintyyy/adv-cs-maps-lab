@@ -105,10 +105,7 @@ public class Screen extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
         // View state information
         if (e.getSource() == viewStateInfo) {
             String abb = viewStateInfoF.getText().trim().toUpperCase();
