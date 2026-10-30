@@ -27,16 +27,15 @@ public class MyHashMap<K,V>{
     }
     
     @SuppressWarnings("unchecked")
-    public V remove(Object key){
+    public V remove(Object key) {
         int index = key.hashCode();
-        if (hashArray[index] != null) {
-            V old = (V) hashArray[index];
+        V prevVal = (V) hashArray[index];
+        if (prevVal != null) {
             keySet.remove(key);
             hashArray[index] = null;
             size--;
-            return old;
         }
-        return null;
+        return prevVal;
     }
     
     public int size(){
