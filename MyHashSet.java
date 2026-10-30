@@ -2,7 +2,7 @@ public class MyHashSet<E>{
     private Object[] hashArray;
     private int size;
     public MyHashSet(){
-        hashArray = new Object[9000];
+        hashArray = new Object[676];
         size = 0;
     }
 
@@ -18,8 +18,8 @@ public class MyHashSet<E>{
     public void clear() {
         for (int i = 0; i < hashArray.length; i++){
             hashArray[i] = null;
-            size = 0;
         }
+        size = 0;
     }
 
     public boolean contains(Object o) {
